@@ -1,0 +1,11 @@
+.fixed-top {
+  background: purple !important;
+}
+
+.img-thumbnail {
+  padding: 0;
+}
+
+.img-thumbnail img {
+  width: 100%;
+}

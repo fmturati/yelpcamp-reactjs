@@ -1,0 +1,33 @@
+<% include ../partials/header %>
+<div style="margin-top: 50px">
+  <header class="jumbotron">
+    <h2>Add new Comment to <%= campground.name %></h2>
+  </header>
+
+  <div style="width: 50%; display: inline-flex;">
+    <form
+      action="/campgrounds/<%= campground._id %>/comments"
+      method="POST"
+      style="width: 100%"
+    >
+      <input
+        style="margin:5px"
+        class="form-control"
+        type="text"
+        placeholder="Name:"
+        name="comment[author]"
+      />
+      <input
+        style="margin:5px"
+        class="form-control"
+        type="text"
+        placeholder="Comment here..."
+        name="comment[text]"
+      />
+      <button style="margin:5px" class="btn btn-success btn-lg">
+        Add new!
+      </button>
+    </form>
+  </div>
+</div>
+<% include ../partials/footer %>

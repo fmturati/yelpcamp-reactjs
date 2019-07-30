@@ -1,0 +1,4 @@
+# dependencies
+/node_modules
+app.js
+# .env // DISABLED JUST TO RUN THE APPLICATION
