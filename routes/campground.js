@@ -16,12 +16,20 @@ router.get("/", function(req, res) {
 });
 
 // CREATE ROUTE - Add New Camp to DB
-router.post("/", function(req, res) {
+router.post("/", isLoggedIn, function(req, res) {
   let name = req.body.name;
   let image = req.body.image;
   let description = req.body.description;
-  let newCampground = { name: name, image: image, description: description };
-  let newCampground = { name: name, image: image, description: description };
+  let author = {
+    id: req.user._id,
+    username: req.user.username
+  };
+  let newCampground = {
+    name: name,
+    image: image,
+    description: description,
+    author: author
+  };
   Campground.create(newCampground, function(err, newlyCreated) {
     if (err) {
       console.log("OPS!", err);
@@ -33,8 +41,8 @@ router.post("/", function(req, res) {
 });
 
 // NEW ROUTE - Show Form to Create New Camp
-router.get("/new", function(req, res) {
-  res.render("/new.ejs");
+router.get("/new", isLoggedIn, function(req, res) {
+  res.render("campgrounds/new.ejs");
 });
 
 // SHOW ROUTE - Show More info about an Unique Camp
@@ -51,5 +59,13 @@ router.get("/:id", function(req, res) {
       }
     });
 });
+
+// Middleware
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  }
+  res.redirect("/login");
+}
 
 module.exports = router;
