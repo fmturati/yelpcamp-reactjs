@@ -1,34 +1,38 @@
 <% include ../partials/header %>
 <div style="margin-top: 50px; text-align: center;">
   <header class="jumbotron">
-    <h2>Add new Campground</h2>
+    <h2>Editing <%= campground.name %></h2>
   </header>
 
   <div style="width: 50%; display: inline-flex;">
-    <form action="/campgrounds" method="POST" style="width: 100%">
+    <form
+      action="/campgrounds/<%= campground._id %>?_method=PUT"
+      method="POST"
+      style="width: 100%"
+    >
       <input
         style="margin:5px"
         class="form-control"
         type="text"
-        placeholder="name"
-        name="name"
+        value="<%= campground.name %>"
+        name="campground[name]"
       />
       <input
         style="margin:5px"
         class="form-control"
         type="text"
-        placeholder="description"
-        name="description"
+        value="<%= campground.description %>"
+        name="campground[description]"
       />
       <input
         style="margin:5px"
         class="form-control"
         type="text"
-        placeholder="Image URL"
-        name="image"
+        value="<%= campground.image %>"
+        name="campground[image]"
       />
       <button style="margin:5px" class="btn btn-success btn-lg">
-        Add new!
+        Update
       </button>
     </form>
   </div>
