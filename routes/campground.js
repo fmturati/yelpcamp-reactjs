@@ -20,6 +20,8 @@ router.get("/", function(req, res) {
 router.post("/", middleware.isLoggedIn, function(req, res) {
   let name = req.body.name;
   let image = req.body.image;
+  let price = req.body.price;
+  let location = req.body.location;
   let description = req.body.description;
   let author = {
     id: req.user._id,
@@ -28,6 +30,8 @@ router.post("/", middleware.isLoggedIn, function(req, res) {
   let newCampground = {
     name: name,
     image: image,
+    location: location,
+    price: price,
     description: description,
     author: author
   };

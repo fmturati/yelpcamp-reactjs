@@ -18,6 +18,22 @@
         name="campground[name]"
       />
       <input
+      style="margin:5px"
+      class="form-control"
+      type="number"
+      value="<%= campground.price %>"
+      name="campground[price]"
+      min="0.01"
+      step="0.01"
+    />
+    <input
+      style="margin:5px"
+      class="form-control"
+      type="text"
+      value="<%= campground.location %>"
+      name="campground[location]"
+    />
+      <input
         style="margin:5px"
         class="form-control"
         type="text"
